@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { useState } from "react";
 import "./index.css"
 
 const Square = (props) => {
+
+  const [value, setValue] = useState(null);
+
   return (
-    <button className="squareCanvas" onClick={() => alert(`Button ${props.value} clicked`)}>
-      {props.value}
+    <button className="squareCanvas" onClick={() => setValue("X")}>
+      {value}
     </button>
   );
 };
@@ -14,7 +18,7 @@ const Board = () => {
 
   const squareRender = (temp) => {
     return(
-      <Square value={temp} />
+      <Square />
     );
   };
 
