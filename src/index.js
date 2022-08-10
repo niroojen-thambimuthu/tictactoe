@@ -4,9 +4,9 @@ import "./index.css"
 
 const Square = (props) => {
   return (
-    <div className="squareCanvas">
+    <button className="squareCanvas" onClick={() => alert(`Button ${props.value} clicked`)}>
       {props.value}
-    </div>
+    </button>
   );
 };
 
