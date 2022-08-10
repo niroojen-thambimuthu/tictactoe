@@ -22,18 +22,18 @@ const Board = () => {
       padding: 20,
     }}>
       Board
-      <Square />
+      <div className="boardCanvas">
+        <Square />
+        <Square />
+        <Square />
+      </div>
     </div>
   );
 };
 
 const Game = () => {
   return (
-    <div style={{
-      backgroundColor: "#202C37",
-      margin: 10,
-      padding: 20,
-    }}>
+    <div className="gameCanvas">
       Game
       <Board />
     </div>
