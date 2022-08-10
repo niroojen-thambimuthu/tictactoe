@@ -5,20 +5,25 @@ import "./index.css"
 
 const Square = (props) => {
 
-  const [value, setValue] = useState(null);
-
   return (
-    <button className="squareCanvas" onClick={() => setValue("X")}>
-      {value}
+    <button className="squareCanvas" onClick={() => {}}>
+      {props.value}
     </button>
   );
 };
 
 const Board = () => {
 
+  const initialSquares = [
+    null, null, null,
+    null, null, null,
+    null, null, null,
+  ]
+  const [squares, setSquares] = useState(initialSquares);
+
   const squareRender = (temp) => {
     return(
-      <Square />
+      <Square value={squares[temp]}/>
     );
   };
 
