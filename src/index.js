@@ -4,12 +4,8 @@ import "./index.css"
 
 const Square = () => {
   return (
-    <div style={{
-      backgroundColor: "#202C37",
-      margin: 10,
-      padding: 20,
-    }}>
-      Square
+    <div className="squareCanvas">
+      X
     </div>
   );
 };
@@ -22,6 +18,16 @@ const Board = () => {
       padding: 20,
     }}>
       Board
+      <div className="boardCanvas">
+        <Square />
+        <Square />
+        <Square />
+      </div>
+      <div className="boardCanvas">
+        <Square />
+        <Square />
+        <Square />
+      </div>
       <div className="boardCanvas">
         <Square />
         <Square />

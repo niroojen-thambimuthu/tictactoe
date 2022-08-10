@@ -20,3 +20,14 @@ body {
   display: flex;
   flex-flow: row nowrap;
 }
+
+.squareCanvas {
+  background-color: #202C37;
+  color: white;
+  border: 1px solid red;
+  padding: 0;
+  font-size: 84px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+}
