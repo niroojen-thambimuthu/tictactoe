@@ -6,7 +6,7 @@ import "./index.css"
 const Square = (props) => {
 
   return (
-    <button className="squareCanvas" onClick={() => {}}>
+    <button className="squareCanvas" onClick={props.onClickEvent}>
       {props.value}
     </button>
   );
@@ -21,9 +21,13 @@ const Board = () => {
   ]
   const [squares, setSquares] = useState(initialSquares);
 
+  const clickEvent = (temp) => {
+    alert(`${temp} clicked`);
+  }
+
   const squareRender = (temp) => {
     return(
-      <Square value={squares[temp]}/>
+      <Square value={squares[temp]} onClickEvent={() => clickEvent(temp)} />
     );
   };
 
