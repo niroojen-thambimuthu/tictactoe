@@ -44,13 +44,9 @@ const Board = () => {
   const status = `Next Player: ${xMove ? "X":"O"}`;
 
   return (
-    <div style={{
-      backgroundColor: "#283547",
-      margin: 10,
-      padding: 20,
-    }}>
+    <div className="gridCanvas">
       {/* Board */}
-      <div>{status}</div>
+      <div className="statusCanvas">{status}</div>
       <div className="boardCanvas">
         {squareRender(0)}
         {squareRender(1)}
@@ -73,7 +69,7 @@ const Board = () => {
 const Game = () => {
   return (
     <div className="gameCanvas">
-      Game
+      Tic-Tac-Toe
       <Board />
     </div>
   );
