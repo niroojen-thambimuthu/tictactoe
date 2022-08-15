@@ -28,6 +28,15 @@ const Board = () => {
     // alert(`${temp} clicked`);
     // 1. make a copy of squares state array
     const newSquares = [...squares];
+    
+    const winnerTemp = Boolean(winnerCheck(newSquares));
+    const squareFilled = Boolean(newSquares[temp]);
+
+    if (winnerTemp || squareFilled){
+      return;
+    }
+
+
     // 2. mutate copy, setting the i-th element to 'X'
     newSquares[temp] = xMove ? "X":"O";
     // 3. Call the setSquare function with the mutated copy
