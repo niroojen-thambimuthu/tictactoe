@@ -19,27 +19,30 @@ const Board = () => {
   //   null, null, null,
   //   null, null, null,
   // ]
-
   const initialSquares = Array(9).fill(null);
+
+
   const [squares, setSquares] = useState(initialSquares);
   const [xMove, setXMove] = useState(true);
 
+  // click event on game canvas squares
   const clickEvent = (temp) => {
-    // alert(`${temp} clicked`);
-    // 1. make a copy of squares state array
+    // copy of squares state array
     const newSquares = [...squares];
     
+    // check if game won or square already played
     const winnerTemp = Boolean(winnerCheck(newSquares));
     const squareFilled = Boolean(newSquares[temp]);
 
+    // Ignore click handler if game 
     if (winnerTemp || squareFilled){
       return;
     }
 
 
-    // 2. mutate copy, setting the i-th element to 'X'
+    // mutate copy, setting the i-th element to 'X'
     newSquares[temp] = xMove ? "X":"O";
-    // 3. Call the setSquare function with the mutated copy
+    // Call the setSquare function with the mutated copy
     setSquares(newSquares);
     setXMove(!xMove);
   }
