@@ -4,7 +4,6 @@ import { useState } from "react";
 import "./index.css"
 
 const Square = (props) => {
-
   return (
     <button className="squareCanvas" onClick={props.onClickEvent}>
       {props.value}
@@ -13,7 +12,6 @@ const Square = (props) => {
 };
 
 const Board = () => {
-
   // const initialSquares = [
   //   null, null, null,
   //   null, null, null,
@@ -22,36 +20,30 @@ const Board = () => {
   // simulate tic-tac-toe board: index 0-8 filled with null
   const initialSquares = Array(9).fill(null);
 
-
+  // initialize squares with null and player with X as true
   const [squares, setSquares] = useState(initialSquares);
   const [xMove, setXMove] = useState(true);
 
-  
   // Function to reset game 
   const resetBoard = () => {
-    setSquares(Array(9).fill(null)); // Reset state to nulls
-    setXMove("X"); // Reset initial player to "X"
+    setSquares(Array(9).fill(null)); // Reset game state array to nulls
+    setXMove(true); // Reset initial player to "X"
   }
 
   // click event on tic-tac-toe squares
   const clickEvent = (temp) => {
-
-    console.log("Temp:" + temp);
-
-    const newSquares = [...squares]; // copy of squares state array
-
+    const newSquares = [...squares]; // copy current squares state array
     const winnerTemp = Boolean(winnerCheck(newSquares)); // check if game is won
     const squareFilled = Boolean(newSquares[temp]); // check if square if already played
+
     // Ignore click handler if game won or square previously played
     if (winnerTemp || squareFilled){
       return;
     }
 
-    // mutate copy, setting the i-th element to 'X'
-    newSquares[temp] = xMove ? "X":"O";
-    // Call the setSquare function with the mutated copy
-    setSquares(newSquares);
-    setXMove(!xMove);
+    newSquares[temp] = xMove ? "X":"O"; // update null square value to choosen player
+    setSquares(newSquares); // update game board state
+    setXMove(!xMove); // update/swap to next player state
   }
 
   // Render the 
