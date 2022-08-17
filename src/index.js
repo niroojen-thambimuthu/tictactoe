@@ -19,28 +19,26 @@ const Board = () => {
   //   null, null, null,
   //   null, null, null,
   // ]
+  // simulate tic-tac-toe board: index 0-8.
   const initialSquares = Array(9).fill(null);
 
 
   const [squares, setSquares] = useState(initialSquares);
   const [xMove, setXMove] = useState(true);
 
-  // click event on game canvas squares
+  // click event on tic-tac-toe squares
   const clickEvent = (temp) => {
-    // copy of squares state array
-    const newSquares = [...squares];
-    // console.log(newSquares.includes(null));
-    // console.log(newSquares);
-    
-    // check if game won or square already played
-    const winnerTemp = Boolean(winnerCheck(newSquares));
-    const squareFilled = Boolean(newSquares[temp]);
 
-    // Ignore click handler if game 
+    console.log("Temp:" + temp);
+
+    const newSquares = [...squares]; // copy of squares state array
+
+    const winnerTemp = Boolean(winnerCheck(newSquares)); // check if game is won
+    const squareFilled = Boolean(newSquares[temp]); // check if square if already played
+    // Ignore click handler if game won or square previously played
     if (winnerTemp || squareFilled){
       return;
     }
-
 
     // mutate copy, setting the i-th element to 'X'
     newSquares[temp] = xMove ? "X":"O";
@@ -49,6 +47,7 @@ const Board = () => {
     setXMove(!xMove);
   }
 
+  // Render the 
   const squareRender = (temp) => {
     return(
       <Square value={squares[temp]} onClickEvent={() => clickEvent(temp)} />
@@ -56,26 +55,20 @@ const Board = () => {
   };
 
   const winningPlayer = winnerCheck(squares);
-  // const status = winningPlayer ? `Winner: ${winningPlayer}` : `Next Player: ${xMove ? "X":"O"}`;
-
-  // const status = null;
-
   let status;
 
   if (winningPlayer){
-    // console.log(`Winner: ${winningPlayer}`);
-    status = `Winner: ${winningPlayer}`;
+    status = `Winner: ${winningPlayer}`; // executes if a player won
   }
-  else if (squares.includes(null) == false){
-    status = `Game Over. No Winner!`;
+  else if (squares.includes(null) === false){
+    status = `Game Over. No Winner!`; // executes when no moves left, no winners
   }
   else{
-    // console.log(`Next Player: ${xMove ? "X":"O"}`);
-    status = `Next Player: ${xMove ? "X":"O"}`;
+    status = `Next Player: ${xMove ? "X":"O"}`; // outputs next player move
   }
 
-  console.log("TEST");
-  console.log(squares.includes(null));
+  // console.log("TEST");
+  // console.log(squares.includes(null));
 
   return (
     <div className="gridCanvas">
