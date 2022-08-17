@@ -19,12 +19,19 @@ const Board = () => {
   //   null, null, null,
   //   null, null, null,
   // ]
-  // simulate tic-tac-toe board: index 0-8.
+  // simulate tic-tac-toe board: index 0-8 filled with null
   const initialSquares = Array(9).fill(null);
 
 
   const [squares, setSquares] = useState(initialSquares);
   const [xMove, setXMove] = useState(true);
+
+  
+  // Function to reset game 
+  const resetBoard = () => {
+    setSquares(Array(9).fill(null)); // Reset state to nulls
+    setXMove("X"); // Reset initial player to "X"
+  }
 
   // click event on tic-tac-toe squares
   const clickEvent = (temp) => {
@@ -72,7 +79,6 @@ const Board = () => {
 
   return (
     <div className="gridCanvas">
-      {/* Board */}
       <div className="statusCanvas">{status}</div>
       <div className="boardCanvas">
         {squareRender(0)}
@@ -89,6 +95,7 @@ const Board = () => {
         {squareRender(7)}
         {squareRender(8)}
       </div>
+      <button onClick={() => resetBoard()}>RESET</button>
     </div>
   );
 };
