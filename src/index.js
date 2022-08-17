@@ -46,13 +46,6 @@ const Board = () => {
     setXMove(!xMove); // update/swap to next player state
   }
 
-  // Render the 
-  const squareRender = (temp) => {
-    return(
-      <Square value={squares[temp]} onClickEvent={() => clickEvent(temp)} />
-    );
-  };
-
   const winningPlayer = winnerCheck(squares);
   let status;
 
@@ -68,6 +61,13 @@ const Board = () => {
 
   // console.log("TEST");
   // console.log(squares.includes(null));
+
+  // Render the 
+  const squareRender = (temp) => {
+    return(
+      <Square value={squares[temp]} onClickEvent={() => clickEvent(temp)} />
+    );
+  };
 
   return (
     <div className="gridCanvas">
@@ -92,6 +92,7 @@ const Board = () => {
   );
 };
 
+// Initial component: Title and Gaming Board
 const Game = () => {
   return (
     <div className="gameCanvas">
@@ -101,6 +102,7 @@ const Game = () => {
   );
 };
 
+// Root element
 ReactDOM.render(
   <Game />,
   document.getElementById("root")
