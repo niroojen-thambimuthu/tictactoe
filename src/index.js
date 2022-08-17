@@ -29,6 +29,8 @@ const Board = () => {
   const clickEvent = (temp) => {
     // copy of squares state array
     const newSquares = [...squares];
+    // console.log(newSquares.includes(null));
+    // console.log(newSquares);
     
     // check if game won or square already played
     const winnerTemp = Boolean(winnerCheck(newSquares));
@@ -54,7 +56,26 @@ const Board = () => {
   };
 
   const winningPlayer = winnerCheck(squares);
-  const status = winningPlayer ? `Winner: ${winningPlayer}` : `Next Player: ${xMove ? "X":"O"}`;
+  // const status = winningPlayer ? `Winner: ${winningPlayer}` : `Next Player: ${xMove ? "X":"O"}`;
+
+  // const status = null;
+
+  let status;
+
+  if (winningPlayer){
+    // console.log(`Winner: ${winningPlayer}`);
+    status = `Winner: ${winningPlayer}`;
+  }
+  else if (squares.includes(null) == false){
+    status = `Game Over. No Winner!`;
+  }
+  else{
+    // console.log(`Next Player: ${xMove ? "X":"O"}`);
+    status = `Next Player: ${xMove ? "X":"O"}`;
+  }
+
+  console.log("TEST");
+  console.log(squares.includes(null));
 
   return (
     <div className="gridCanvas">
