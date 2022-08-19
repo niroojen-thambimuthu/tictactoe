@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { useState } from "react";
 import "./index.css"
 
+// Square component: thru props, display value of specific square: null, X or O 
 const Square = (props) => {
   return (
     <button className="squareCanvas" onClick={props.onClickEvent}>
@@ -11,7 +12,9 @@ const Square = (props) => {
   );
 };
 
+// Board component: contains main game dynamics
 const Board = () => {
+
   // const initialSquares = [
   //   null, null, null,
   //   null, null, null,
@@ -20,7 +23,7 @@ const Board = () => {
   // simulate tic-tac-toe board: index 0-8 filled with null
   const initialSquares = Array(9).fill(null);
 
-  // initialize squares with null and player with X as true
+  // initialize squares with null and initial player with X as true
   const [squares, setSquares] = useState(initialSquares);
   const [xMove, setXMove] = useState(true);
 
@@ -46,8 +49,9 @@ const Board = () => {
     setXMove(!xMove); // update/swap to next player state
   }
 
-  const winningPlayer = winnerCheck(squares);
+  // Output game data: winner, no-winner, who the next player
   let status;
+  const winningPlayer = winnerCheck(squares);
 
   if (winningPlayer){
     status = `Winner: ${winningPlayer}`; // executes if a player won
@@ -59,16 +63,14 @@ const Board = () => {
     status = `Next Player: ${xMove ? "X":"O"}`; // outputs next player move
   }
 
-  // console.log("TEST");
-  // console.log(squares.includes(null));
-
-  // Render the 
+  // Render the through the Square component, passing values: null, X or O 
   const squareRender = (temp) => {
     return(
       <Square value={squares[temp]} onClickEvent={() => clickEvent(temp)} />
     );
   };
 
+  // render 9 block game canvas, including output status and reset button
   return (
     <div className="gridCanvas">
       <div className="statusCanvas">{status}</div>
@@ -92,7 +94,7 @@ const Board = () => {
   );
 };
 
-// Initial component: Title and Gaming Board
+// Initial component: Title and calling Board component
 const Game = () => {
   return (
     <div className="gameCanvas">
@@ -108,7 +110,9 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+// component to check winner, has copied array values
 function winnerCheck(squares) {
+  // Winning combinations
   const lines = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
     [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
@@ -117,7 +121,7 @@ function winnerCheck(squares) {
 
   for (let temp of lines){
     const [a, b, c] = temp;
-
+    // returns winning player if winning combinations is met
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
       return squares[a]; // X or O
     }
