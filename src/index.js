@@ -98,7 +98,7 @@ const Board = () => {
 const Game = () => {
   return (
     <div className="gameCanvas">
-      <h1>Tic-Tac-Toe</h1>
+      <div className="headerBox"><h1>Tic-Tac-Toe</h1></div>
       <Board />
     </div>
   );

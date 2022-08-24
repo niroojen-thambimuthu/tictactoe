@@ -14,17 +14,20 @@ body {
 }
 
 .gameCanvas {
-  /* background-color: #202C37; */
-  /* margin: 10; */
-  /* padding: 20; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 5px solid red; */
-  height: 100%;
-  /* background-color: orange; */
+  height: 100vh;
 }
 
+.headerBox{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 10vh;
+}
 
 h1 {
   font-weight: 400;
