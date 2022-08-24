@@ -89,7 +89,9 @@ const Board = () => {
         {squareRender(7)}
         {squareRender(8)}
       </div>
-      <button onClick={() => resetBoard()}>RESET</button>
+      <div className="resetButton">
+        <button onClick={() => resetBoard()}>RESET</button>
+      </div>
     </div>
   );
 };
