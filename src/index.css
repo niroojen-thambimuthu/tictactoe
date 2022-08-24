@@ -7,7 +7,7 @@
 body {
   margin:0;
   padding: 0;
-  min-width: 300px;
+  min-width: 306px;
   background-color: #283547;
   height: 100vh;
   font-size: 32px;
@@ -36,16 +36,22 @@ h1 {
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.25); /* need to change */
 }
 
-
-.statusCanvas{
-  margin: 20px;
-  font-size: 24px;
-}
-
 .gridCanvas{
   background-color: #202C37;
   margin: 10;
   padding: 20;
+  /* border: 3px solid silver; */
+  /* border-radius: 5px; */
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.25);
+}
+
+.statusCanvas{
+  padding: 20px;
+  font-size: 24px;
+  border: 3px solid silver;
+  border-radius: 5px;
+  text-align: center;
+  /* margin-bottom: 10px; */
 }
 
 .boardCanvas {
@@ -56,7 +62,7 @@ h1 {
 .squareCanvas {
   background-color: #202C37;
   color: white;
-  border: 2px solid silver;
+  /* border: 2px solid silver; */
   border-radius: 5px;
   padding: 0;
   font-size: 84px;
